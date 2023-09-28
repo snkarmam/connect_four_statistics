@@ -27,7 +27,7 @@ class Connect4:
     def set_board(self, board):
         self.board = board
         
-    def has_won(self, player):
+    def _has_won(self, player):
         for quad in self.winning_quadruplets:
             if all(self.board[x, y] == player for x, y in quad):
                 return True
@@ -40,8 +40,8 @@ class Connect4:
                 return True
         return False
     
-    def is_finished(self):
-        if any(self.has_won(player) for player in [1, -1]):
+    def _is_finished(self):
+        if any(self._has_won(player) for player in [1, -1]):
             return True
         if np.all(self.board != 0):
             return True
@@ -50,10 +50,10 @@ class Connect4:
     def run(self, player1, player2):
         self.reset()
         moves = 0
-        while not self.is_finished():
+        while not self._is_finished():
             for player in [player1, player2]:
                 col = player.play(self.board)
                 self.play(col, player.symbol)
                 moves += 1
-                if self.is_finished():
+                if self._is_finished():
                     return player.symbol, moves

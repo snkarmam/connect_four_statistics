@@ -12,10 +12,10 @@ class MonteCarloPlayer():
         valid_columns = np.where(board[0, :] == 0)[0]
         average_for_moves = {}
         for move in valid_columns:
-            average_for_moves[move] = self.run_simulation(move, np.copy(board))
-        return self.largest_average(average_for_moves)
+            average_for_moves[move] = self._run_simulation(move, np.copy(board))
+        return self._largest_average(average_for_moves)
 
-    def largest_average(self, average_for_moves):
+    def _largest_average(self, average_for_moves):
         largest_average = -1
         best_move = -1
         for move in average_for_moves:
@@ -24,7 +24,7 @@ class MonteCarloPlayer():
                 largest_average = average_for_moves[move]
         return best_move
         
-    def run_simulation(self, move, board_copy):
+    def _run_simulation(self, move, board_copy):
         game = Connect4()
         game.set_board(board_copy)
         game.play(move, self.symbol)

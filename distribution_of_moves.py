@@ -17,10 +17,10 @@ class DistributionOfMoves():
 			moves_distribution[winner].append(moves)
 			print("game " + str(_) +  " done, winner is " + str(winner) + " amount of moves: " + str(moves))
 
-		self.show_result(moves_distribution)
+		self._show_result(moves_distribution)
 
 
-	def show_result(self, moves_distribution):
+	def _show_result(self, moves_distribution):
 		print("Player 1 wins:", len(moves_distribution[1]))
 		print("Player 2 wins:", len(moves_distribution[-1]))
 		
