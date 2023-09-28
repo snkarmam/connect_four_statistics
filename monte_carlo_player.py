@@ -1,6 +1,6 @@
 import numpy as np
-from Connect4 import Connect4
-from RandomPlayer import RandomPlayer
+from connect4 import Connect4
+from random_player import RandomPlayer
 
 class MonteCarloPlayer():
     def __init__(self,symbol, adversary_symbol, simulation_amount) -> None:

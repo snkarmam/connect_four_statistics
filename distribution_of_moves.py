@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from Connect4 import Connect4
+from connect4 import Connect4
 
 class DistributionOfMoves():
 	def __init__(self, num_trials, player1, player2) -> None:

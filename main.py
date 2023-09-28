@@ -1,8 +1,9 @@
 import numpy as np
 
-from RandomPlayer import RandomPlayer
-from MonteCarloPlayer import MonteCarloPlayer
-from DistributionOfMoves import DistributionOfMoves
+from random_player import RandomPlayer
+from monte_carlo_player import MonteCarloPlayer
+from distribution_of_moves import DistributionOfMoves
+from random_player import RandomPlayer
 
 if __name__ == "__main__":
     player1 = MonteCarloPlayer(1, -1, 10)
