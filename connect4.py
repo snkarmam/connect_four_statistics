@@ -40,20 +40,39 @@ class Connect4:
                 return True
         return False
     
+    #Note: player symbols are hard coded
     def _is_finished(self):
         if any(self._has_won(player) for player in [1, -1]):
             return True
         if np.all(self.board != 0):
             return True
         return False
+    
+    #Note: player symbols are hard coded
+    def winner(self):
+        if self._has_won(1):
+            return 1
+        elif self._has_won(-1):
+            return -1
+        else:
+            return 0
 
-    def run(self, player1, player2):
-        self.reset()
+    def run_multiple_times(self, player1, player2, number_of_games):
+        results = []
+        for _ in range(0, number_of_games):
+            self.reset()
+            results.append(self.run_once(player1, player2))
+        return results
+
+
+    def run_once(self, player1, player2):
         moves = 0
+        if self._is_finished():
+            return self.winner(), moves
         while not self._is_finished():
             for player in [player1, player2]:
                 col = player.play(self.board)
                 self.play(col, player.symbol)
                 moves += 1
                 if self._is_finished():
-                    return player.symbol, moves
+                    return self.winner(), moves

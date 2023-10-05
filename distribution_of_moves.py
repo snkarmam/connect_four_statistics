@@ -11,14 +11,12 @@ class DistributionOfMoves():
 	def run(self):
 		moves_distribution = {1: [], -1: []}
 		
-		for _ in range(self.num_trials):
-			game = Connect4()
-			winner, moves = game.run(self.player1, self.player2)
-			moves_distribution[winner].append(moves)
-			print("game " + str(_) +  " done, winner is " + str(winner) + " amount of moves: " + str(moves))
-
+		game = Connect4()
+		results = game.run_multiple_times(self.player1, self.player2, self.num_trials)
+		for tuple in results:
+			moves_distribution[tuple[0]].append(tuple[1])
 		self._show_result(moves_distribution)
-
+		
 
 	def _show_result(self, moves_distribution):
 		print("Player 1 wins:", len(moves_distribution[1]))
