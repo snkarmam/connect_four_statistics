@@ -1,16 +1,16 @@
 import random
 
 class RandomPick():
-	def __init__(self, t, levers, n) -> None:
+	def __init__(self, t, levers, amount_of_levers) -> None:
 		self.t = t
 		self.levers = levers
-		self.n = n
+		self.amount_of_levers = amount_of_levers
 
 	def _choice(self):
-		return random.randint(0, self.n-1)
+		return random.randint(0, self.amount_of_levers-1)
 	
 	def play(self):
-		self.picks = [0] * self.n
+		self.picks = [0] * self.amount_of_levers
 		gain = 0
 		for _ in range(0, self.t):
 			choice = self._choice()
