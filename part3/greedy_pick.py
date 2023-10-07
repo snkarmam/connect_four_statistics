@@ -1,8 +1,8 @@
 class GreedyPick():
-	def __init__(self, t, levers, amount_of_levers, greed) -> None:
-		self.t = t
+	def __init__(self, total_play_times, levers, greed) -> None:
+		self.total_play_times = total_play_times
 		self.levers = levers
-		self.amount_of_levers = amount_of_levers
+		self.amount_of_levers = len(self.levers.get_levers())
 		self.greed = greed
 		self.gain = 0
 
@@ -26,7 +26,7 @@ class GreedyPick():
 		self.picks = [self.greed//self.amount_of_levers] * self.amount_of_levers
 		exploration_results = self.explore()
 		best_pick = exploration_results.index(max(exploration_results))
-		self.picks[best_pick] = self.t - self.greed + self.greed//self.amount_of_levers
-		for _ in range(self.greed, self.t):
+		self.picks[best_pick] = self.total_play_times - self.greed + self.greed//self.amount_of_levers
+		for _ in range(self.greed, self.total_play_times):
 			self.gain += self.levers.pick_lever(best_pick)
 		return (self.picks, self.gain)

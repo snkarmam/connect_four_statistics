@@ -2,16 +2,16 @@ from greedy_pick import GreedyPick
 import random
 
 class EpsilonGreedyPick():
-	def __init__(self, t, levers, amount_of_levers, greed, epsilon, premilinary_exploration) -> None:
-		self.t = t
+	def __init__(self, total_play_times, levers, greed, epsilon, premilinary_exploration) -> None:
+		self.total_play_times = total_play_times
 		self.levers = levers
-		self.amount_of_levers = amount_of_levers
+		self.amount_of_levers = len(self.levers.get_levers())
 		self.greed = greed
 		self.epsilon = epsilon
 		self.premilinary_exploration = premilinary_exploration
 
 	def _explore(self):
-		greedy_pick = GreedyPick(self.t, self.levers, self.amount_of_levers, self.greed)
+		greedy_pick = GreedyPick(self.total_play_times, self.levers, self.amount_of_levers, self.greed)
 		return greedy_pick.explore()
 
 	def _pick_random_choice(self):
@@ -33,7 +33,7 @@ class EpsilonGreedyPick():
 		if self.premilinary_exploration:
 			self.average_return_per_lever = self._explore()
 			self.amount_of_plays_per_lever = [self.greed] * self.amount_of_levers
-		for _ in range(0, self.t):
+		for _ in range(0, self.total_play_times):
 			random_chance = random.uniform(0, 1)
 			if random_chance <= self.epsilon:
 				self._pick_random_choice()

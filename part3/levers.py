@@ -9,6 +9,9 @@ class Levers():
 			self.picks.append(0)
 		self.n = n
 
+	def get_levers(self):
+		return self.levers
+	
 	def pick_lever(self, choice):
 		new_random_number = random.uniform(0, 1)
 		if new_random_number <= self.levers[choice]:
