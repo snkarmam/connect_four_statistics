@@ -14,7 +14,6 @@ class RandomPick():
 		gain = 0
 		for _ in range(0, self.t):
 			choice = self._choice()
-			print(choice)
 			self.picks[choice] += 1
 			gain  += self.levers.pick_lever(choice)
 		return (self.picks, gain)
