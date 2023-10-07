@@ -9,6 +9,8 @@ class EpsilonGreedyPick():
 		self.greed = greed
 		self.epsilon = epsilon
 		self.premilinary_exploration = premilinary_exploration
+		self.average_return_per_lever = [0] * self.amount_of_levers
+		self.amount_of_plays_per_lever = [0] * self.amount_of_levers
 
 	def _explore(self):
 		greedy_pick = GreedyPick(self.total_play_times, self.levers, self.amount_of_levers, self.greed)
@@ -27,8 +29,6 @@ class EpsilonGreedyPick():
 		self._calculate_new_average_and_amount(best_pick, result_of_choice)
 
 	def play(self):
-		self.average_return_per_lever = [0] * self.amount_of_levers
-		self.amount_of_plays_per_lever = [0] * self.amount_of_levers
 		self.gain = 0
 		if self.premilinary_exploration:
 			self.average_return_per_lever = self._explore()
