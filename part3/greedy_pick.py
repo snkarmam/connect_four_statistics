@@ -8,7 +8,6 @@ class GreedyPick():
 
 	def explore(self):
 		average_return_per_lever = []
-		print(self.greed//self.amount_of_levers)
 		for lever in range(0, self.amount_of_levers):
 			average_return_per_lever.append(self._explore_lever(lever))
 		return average_return_per_lever

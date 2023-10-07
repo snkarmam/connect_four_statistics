@@ -13,7 +13,7 @@ class EpsilonGreedyPick():
 		self.amount_of_plays_per_lever = [0] * self.amount_of_levers
 
 	def _explore(self):
-		greedy_pick = GreedyPick(self.total_play_times, self.levers, self.amount_of_levers, self.greed)
+		greedy_pick = GreedyPick(self.total_play_times, self.levers, self.greed)
 		return greedy_pick.explore()
 
 	def _pick_random_choice(self):
