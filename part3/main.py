@@ -4,12 +4,12 @@ from greedy_pick import GreedyPick
 from epsilon_greedy_pick import EpsilonGreedyPick
 from ucb import Ucb
 
-total_play_times = 1000000
-amount_of_levers = 10
+total_play_times = 100000
+amount_of_levers = 20
 levers = Levers(amount_of_levers)
 algo = RandomPick(total_play_times, levers)
-algo2 = GreedyPick(total_play_times, levers, 100)
-algo3 = EpsilonGreedyPick(total_play_times, levers, 100, 0.001, True)
+algo2 = GreedyPick(total_play_times, levers, 1000)
+algo3 = EpsilonGreedyPick(total_play_times, levers, 100, 0.1, False)
 algo4 = Ucb(total_play_times, levers)
 
 result = algo.play()
